@@ -84,13 +84,13 @@ function checkGameOver() {
 }
 
 function endGameX() {
-    header.innerHTML = "<img src='/pics/X.jpg' width='42' height='42' align='center'> wins!"
+    header.innerHTML = "<img src='pics/X.jpg' width='42' height='42' align='center'> wins!"
     gameOver = true;
     removeEventListeners();
 }
 
 function endGameO() {
-    header.innerHTML = "<img src='/pics/O.png' width='42' height='42' align='center'> wins!"
+    header.innerHTML = "<img src='pics/O.png' width='42' height='42' align='center'> wins!"
     gameOver = true;
     removeEventListeners();
 }
