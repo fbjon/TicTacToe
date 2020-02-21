@@ -13,7 +13,7 @@ var gameOver = false;
 var array = [];
 
 window.onload = function () {
-    let i = Math.random();
+    var i = Math.random();
     console.log(i);
     if (i > 0.5) {
         addO();
@@ -37,8 +37,8 @@ function addX() {
 function addO() {
     if (array.length < 9) {
         array.push('O');
-        let emptySlots = document.querySelectorAll("td:not(.X):not(.O)")
-        let i = Math.floor(Math.random() * (emptySlots.length));
+        var emptySlots = document.querySelectorAll("td:not(.X):not(.O)")
+        var i = Math.floor(Math.random() * (emptySlots.length));
         emptySlots[i].classList.add('O');
         addEventlisters();
         checkGameOver();
