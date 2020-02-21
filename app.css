@@ -27,13 +27,13 @@ td {
 }
 
 .X {
-    background: url('/pics/X.jpg') center center;
+    background: url('pics/X.jpg') center center;
     background-repeat: no-repeat;
     background-size: 80px;
 }
 
 .O {
-    background: url('/pics/O.png') center center;
+    background: url('pics/O.png') center center;
     background-repeat: no-repeat;
     background-size: 130px;
 }
