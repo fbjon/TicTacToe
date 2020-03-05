@@ -46,6 +46,65 @@ function addO() {
 }
 
 function checkGameOver() {
+    /*
+    This function is easy to understand: it checks for victory/draw conditions. However there's two
+    challenges, 
+    a) how would you know if there's a typo in one of the if-clauses, i.e. how would you 
+      (easily) test all the different possibilities of winning and not-winning, especially since the actual
+      gameplay is random and not deterministic, and 
+    b) what if you want a game with a 5x5 board or larger?.
+    
+    Not that the game needs to be highly configurable, but here's a more expandable approach:
+    
+    function checkVictoryX(cellList) { 
+        // TODO check if list of cells contain 3 X'es in a row and return true/false, or "X"/null
+        return null;
+    }
+    
+    And likewise with checkVictoryY(). You can then run these two functions on all combinations of rows, 
+    columns and diagonals like so:
+    if(checkVictoryX([td1,td2,td3]) {
+        ...
+    } else if(checkVictoryY([td1,td2,td3])) ...
+    
+    Next, instead of writing out the different rows, columns and diagonals multiple times you could have
+    an array of arrays:
+    let checkCells = [
+        [td1, td2, td3],
+        ...
+        [td1, td4, td7],
+        ...
+    ]
+    Finally, you could even combine the two victory checks and do something like this:
+    
+    let victory = checkCells.find(function(rowColOrDiag) {
+        let result = checkVictory(rowColOrDiag); // returns "X", "Y", or null
+        if(result == "X") {
+            endGameX();
+            return true;
+        } else if(result == "Y") {
+            endGameY();
+            return true;
+        } 
+        return false;
+    });
+    
+    // 'victory' will be either undefined or the winning row/col/diagonal
+    if(victory) {
+        ...
+    } else if (array.length === 9) {
+        endGame();
+    }
+    
+    Finally, you might combine and change the endGame-functions to take a parameter of who won (if anyone).
+    
+    This game doesn't need this level of complexity, but it's a place to experiment with different levels
+    of abstractions:
+    
+    Too little abstraction -> difficult to modify and expand
+    Too much abstraction -> difficult to understand
+    
+    */
     if (td1.classList.contains('X') && td2.classList.contains('X') && td3.classList.contains('X')) {
         endGameX();
     } else if (td4.classList.contains('X') && td5.classList.contains('X') && td6.classList.contains('X')) {
